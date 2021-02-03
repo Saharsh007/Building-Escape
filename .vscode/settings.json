@@ -1,7 +1,9 @@
 {
 	"files.exclude": {
+		"E:/UNREAL projects/BuildingEscape/Building_Escape/.git": true,
 		"E:/UNREAL projects/BuildingEscape/Building_Escape/.vscode": true,
 		"E:/UNREAL projects/BuildingEscape/Building_Escape/Content": true,
-		"E:/UNREAL projects/BuildingEscape/Building_Escape/Intermediate": true
+		"E:/UNREAL projects/BuildingEscape/Building_Escape/Intermediate": true,
+		"E:/UNREAL projects/BuildingEscape/Building_Escape/Saved": true
 	}
 }
