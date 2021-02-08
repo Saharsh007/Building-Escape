@@ -32,8 +32,10 @@ private:
 	FVector GetPlayersReach() const;
 	FVector GetPlayersWorldPos() const;
 	float Reach = 200.f;
-
+	
+	UPROPERTY()
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
+	UPROPERTY()
 	UInputComponent* InputComponent = nullptr;
 	// FVector PlayerViewPointLocation
 	// FRotator PlayerViewPointRotation

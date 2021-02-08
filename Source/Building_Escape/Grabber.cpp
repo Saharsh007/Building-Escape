@@ -46,7 +46,7 @@ void UGrabber::FindPhysicsHandle(){
 	PHYSICS HANDLE COMPONENTS
 	*/
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	if(PhysicsHandle==nullptr){
+	if(!PhysicsHandle){
 		UE_LOG(LogTemp, Warning, TEXT("No physics handle component found on %s"), *GetOwner()->GetName());
 	}
 }
@@ -74,10 +74,13 @@ FVector UGrabber::GetPlayersReach() const{
 
 void UGrabber::Release(){
 // UE_LOG(LogTemp, Warning, TEXT("Release function call successs"));
+if(!PhysicsHandle) {return;}
 PhysicsHandle->ReleaseComponent();
 }
 
 void UGrabber::Grab(){
+	if(!PhysicsHandle) {return;}
+
 	FHitResult HitResult = GetFirstPhysicsBodyInReach();	
 	UPrimitiveComponent* CompnentTOGrab = HitResult.GetComponent();
 	if(HitResult.GetActor()){
@@ -90,6 +93,7 @@ void UGrabber::Grab(){
 void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	if(!PhysicsHandle) {return;}
 
 	if(PhysicsHandle->GrabbedComponent){
 		PhysicsHandle->SetTargetLocation(GetPlayersReach());
